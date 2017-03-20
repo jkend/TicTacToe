@@ -56,10 +56,6 @@
     }
     // disable this button
     sender.enabled = NO;
-    //NSLog(@"view bounds ht: %f", self.gridHolderView.bounds.size.height);
-    //NSLog(@"view frame ht: %f", self.gridHolderView.frame.size.height);
-    //NSLog(@"view bounds wd: %f", self.gridHolderView.bounds.size.width);
-    //NSLog(@"view frame wd: %f", self.gridHolderView.frame.size.width);
     
     // update the model using this button's tag (a number from 0 to 15)
     [self.ticTacToe makeMove:[sender tag]];
