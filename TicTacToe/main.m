@@ -2,7 +2,7 @@
 //  main.m
 //  TicTacToe
 //
-//  Created by Tom Lawrence on 2/9/17.
+//  Created by Joy Kendall on 2/9/17.
 //  Copyright © 2017 Joy. All rights reserved.
 //
 
