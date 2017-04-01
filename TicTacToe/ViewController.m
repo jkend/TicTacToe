@@ -11,9 +11,9 @@
 
 @interface ViewController ()
 // outlets whose fields get set
-@property (weak, nonatomic) IBOutlet UIView *gridHolderView;
 @property (weak, nonatomic) IBOutlet UILabel *gameStatusLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *currentPlayerImageView;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *gridButtons;
 @property (weak, nonatomic) IBOutlet UILabel *currentPlayerLabel;
 // Strings to hold names of player images
 @property (nonatomic, strong) NSString *OImageName;
@@ -35,6 +35,12 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
+    for (UIButton *button in self.gridButtons) {
+        [button setImage:[UIImage imageNamed:@"blank"] forState:UIControlStateNormal|UIControlStateDisabled];
+        button.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
+        button.enabled = YES;
+    }
     self.XImageName = @"x";
     self.OImageName = @"o";
 }
@@ -65,7 +71,7 @@
         self.gameStatusLabel.text = @"Woo hoo!";
         self.currentPlayerLabel.text = @"We have a winner!";
         // disable remaining buttons - the game is over, after all!
-        for (UIButton *button in self.gridHolderView.subviews) {
+        for (UIButton *button in self.gridButtons) {
             button.enabled = NO;
         }
     }
@@ -96,7 +102,7 @@
 // X and O images according to passed-in image asset names.
 -(void)newGameWithX:(NSString *)x andO:(NSString *)o {
     [self.ticTacToe initBoard];
-    for (UIButton *button in self.gridHolderView.subviews) {
+    for (UIButton *button in self.gridButtons) {
         [button setImage:[UIImage imageNamed:@"blank"] forState:UIControlStateNormal|UIControlStateDisabled];
         button.enabled = YES;
     }
